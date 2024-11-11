@@ -1,4 +1,4 @@
-###arrays operations 
+# arrays operations 
 Create two arbitrary integer arrays. Write a script that:
 - removes all duplicate elements from each array;
 - outputs the number of duplicate elements of two arrays;
