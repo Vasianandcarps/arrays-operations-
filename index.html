@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Робота з масивами</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Робота з масивами</h2>
+    <p id="output"></p>
+</div>
+
+<script>
+    // Створюємо два довільні масиви
+    let array1 = [1, 3, 5, 7, 7, 9, 9, 11];
+    let array2 = [3, 5, 5, 7, 13, 15, 15];
+
+    // Функція для видалення дублікатів
+    function removeDuplicates(array) {
+        return Array.from(new Set(array));
+    }
+
+    // Видаляємо дублікат з кожного масиву
+    let uniqueArray1 = removeDuplicates(array1);
+    let uniqueArray2 = removeDuplicates(array2);
+
+    // Підраховуємо дублікати між двома масивами
+    let duplicateCount = 0;
+    uniqueArray1.forEach(value => {
+        if (uniqueArray2.includes(value)) {
+            duplicateCount++;
+        }
+    });
+
+    // Об'єднуємо масиви та видаляємо дублікат
+    let mergedArray = removeDuplicates([...uniqueArray1, ...uniqueArray2]);
+
+    // Реверс масиву за допомогою циклу foreach
+    let reversedArray = [];
+    mergedArray.forEach((value, index) => {
+        reversedArray[mergedArray.length - 1 - index] = value;
+    });
+
+    // Вивід результатів
+    document.getElementById("output").innerHTML = `
+        <strong>Перший масив:</strong> ${array1.join(", ")}<br>
+        <strong>Другий масив:</strong> ${array2.join(", ")}<br><br>
+        <strong>Перший масив без дублікатів:</strong> ${uniqueArray1.join(", ")}<br>
+        <strong>Другий масив без дублікатів:</strong> ${uniqueArray2.join(", ")}<br><br>
+        <strong>Кількість спільних елементів:</strong> ${duplicateCount}<br><br>
+        <strong>Злитий масив без дублікатів:</strong> ${mergedArray.join(", ")}<br><br>
+        <strong>Зворотній порядок злитого масиву:</strong> ${reversedArray.join(", ")}
+    `;
+</script>
+
+</body>
+</html>
